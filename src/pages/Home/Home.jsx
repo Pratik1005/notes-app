@@ -12,7 +12,7 @@ const Home = () => {
           efficiency with MyNotes
         </p>
         <div className="cta">
-          <button className="btn btn-primary">Try MyNotes</button>
+          <button className="btn btn-primary cta-btn">Try MyNotes</button>
         </div>
       </div>
       <div className="hero-img">
