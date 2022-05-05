@@ -6,3 +6,63 @@
 .App {
   font-family: "Inter", sans-serif;
 }
+
+.top-header {
+  background-color: #f7f7f7;
+}
+
+.header-logo {
+  font-family: "Parisienne", sans-serif;
+  font-size: 2.5rem;
+  color: var(--clr-primary);
+  padding: 0 1rem;
+}
+
+.app-ctn {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--menu-background);
+  height: calc(100vh - 4rem);
+}
+
+.menu-ctn {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.menu-icon {
+  padding: 0 1rem;
+}
+
+/* footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-color);
+  padding: 2rem 0;
+}
+
+footer .footer-links a {
+  color: var(--clr-primary);
+  padding-right: 14px;
+  font-size: 1.5rem;
+}
+
+footer p.copyright {
+  font-size: 14px;
+}
