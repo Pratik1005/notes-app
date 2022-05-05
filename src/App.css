@@ -43,6 +43,10 @@
   color: var(--text-color);
 }
 
+.menu-link:hover {
+  background-color: var(--menu-hover);
+}
+
 .menu-icon {
   padding: 0 1rem;
 }
