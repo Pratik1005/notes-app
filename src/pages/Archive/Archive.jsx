@@ -1,3 +1,17 @@
+import {NavMenu, Header} from "../../components";
+
 const Archive = () => {
-  return <h1>Archive</h1>;
+  return (
+    <>
+      <Header />
+      <section className="app-ctn">
+        <NavMenu />
+        <div className="notes-ctn">
+          <h2>Archive</h2>
+        </div>
+      </section>
+    </>
+  );
 };
+
+export {Archive};
