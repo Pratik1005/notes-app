@@ -7,8 +7,12 @@
   font-family: "Inter", sans-serif;
 }
 
+/* top bar/header */
 .top-header {
   background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-logo {
@@ -18,11 +22,43 @@
   padding: 0 1rem;
 }
 
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--input-border);
+}
+
+.search-icon {
+  padding: 0 1rem;
+}
+
+input.search-input {
+  border: none;
+  background-color: #f7f7f7;
+}
+
+.theme-profile-ctn {
+  display: flex;
+  align-items: center;
+  padding-right: 3rem;
+}
+
+.theme-icon {
+  padding-right: 2rem;
+}
+
+.avatar-ctn {
+  width: 2.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+}
+
 .app-ctn {
   display: grid;
   grid-template-columns: 1fr 7fr;
 }
 
+/* left side menu */
 .side-menu {
   display: flex;
   flex-direction: column;

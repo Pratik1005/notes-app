@@ -1,5 +1,6 @@
 import "./Home.css";
 import heroImg from "../../assets/hero.svg";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   return (
@@ -12,7 +13,9 @@ const Home = () => {
           efficiency with MyNotes
         </p>
         <div className="cta">
-          <button className="btn btn-primary cta-btn">Try MyNotes</button>
+          <Link to="/notes" className="btn btn-primary cta-btn">
+            Try MyNotes
+          </Link>
         </div>
       </div>
       <div className="hero-img">
