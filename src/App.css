@@ -106,3 +106,8 @@ footer .footer-links a {
 footer p.copyright {
   font-size: 14px;
 }
+
+/* notes */
+.notes-ctn {
+  background-color: #f2f2f2;
+}

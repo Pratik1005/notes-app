@@ -13,7 +13,7 @@ const NavMenu = () => {
         <NavLink to="/archive" className="menu-link">
           <span className="material-icons menu-icon">archive</span> Archive
         </NavLink>
-        <NavLink to="/notes" className="menu-link">
+        <NavLink to="/trash" className="menu-link">
           <span className="material-icons menu-icon">delete</span> Trash
         </NavLink>
       </nav>
