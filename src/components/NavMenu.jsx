@@ -16,6 +16,9 @@ const NavMenu = () => {
         <NavLink to="/trash" className="menu-link">
           <span className="material-icons menu-icon">delete</span> Trash
         </NavLink>
+        <button className="btn btn-icon-text mg-sm">
+          <span className="material-icons">add</span>Add Note
+        </button>
       </nav>
       <Footer />
     </aside>
