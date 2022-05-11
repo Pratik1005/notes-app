@@ -1,3 +1,11 @@
+.auth-form-ctn {
+  background-color: var(--body-background);
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  height: 100vh;
+}
+
 form.auth-form {
   background-color: var(--profile-ctn-background);
   padding: 2rem 4rem;
@@ -7,6 +15,7 @@ form.auth-form {
   max-width: 31.25rem;
   box-shadow: var(--light-shadow);
   color: var(--text-color);
+  height: fit-content;
 }
 
 .form-control {
@@ -25,9 +34,11 @@ form.auth-form {
   padding-left: 0.5rem;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"] */
+
+.input-field {
   width: 100%;
   padding: 0.5rem;
   font-family: inherit;

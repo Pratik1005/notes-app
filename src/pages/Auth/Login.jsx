@@ -1,5 +1,9 @@
+import "./Auth.css";
+import {toast} from "react-toastify";
+import axios from "axios";
+import {useState} from "react";
 import {useAuth} from "../../context";
-import {useNavigate, useLocation} from "react-router-dom";
+import {useNavigate, useLocation, Link} from "react-router-dom";
 
 const Login = () => {
   const {setAuth} = useAuth();
@@ -40,7 +44,7 @@ const Login = () => {
     }
   };
   return (
-    <section>
+    <section className="auth-form-ctn">
       <form
         className="br-md auth-form"
         onSubmit={(e) => handleLogin(e, loginData.email, loginData.password)}
@@ -57,6 +61,7 @@ const Login = () => {
             placeholder="name@gmail.com"
             autoComplete="off"
             required
+            className="input-field"
             value={loginData.email}
             onChange={(e) => handleEmail(e)}
           />
@@ -70,6 +75,7 @@ const Login = () => {
             name="password"
             id="password"
             required
+            className="input-field"
             value={loginData.password}
             placeholder="&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;&lowast;"
             onChange={(e) => handlePassword(e)}
