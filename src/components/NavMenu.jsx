@@ -1,6 +1,8 @@
+import {useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Footer} from "./index";
+import {Footer, NoteModal} from "./index";
 const NavMenu = () => {
+  const [isAddNote, setIsAddNote] = useState(false);
   return (
     <aside className="side-menu">
       <nav className="menu-ctn">
@@ -16,9 +18,13 @@ const NavMenu = () => {
         <NavLink to="/trash" className="menu-link">
           <span className="material-icons menu-icon">delete</span> Trash
         </NavLink>
-        <button className="btn btn-icon-text mg-sm">
+        <button
+          className="btn btn-icon-text mg-sm"
+          onClick={() => setIsAddNote((prev) => !prev)}
+        >
           <span className="material-icons">add</span>Add Note
         </button>
+        {isAddNote && <NoteModal setIsAddNote={setIsAddNote} />}
       </nav>
       <Footer />
     </aside>

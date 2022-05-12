@@ -1,3 +1,4 @@
+import "./Notes.css";
 import {NavMenu, Header, Note} from "../../components";
 
 const Notes = () => {

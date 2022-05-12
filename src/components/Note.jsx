@@ -1,7 +1,7 @@
 const Note = () => {
   return (
     <div className="note pd-sm">
-      <span className="material-icons-outlined unpin-icon icon-hover pd-xs br-full cursor-pointer">
+      <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
         push_pin
       </span>
       <h4 className="pd-bottom-md">Note Title</h4>
@@ -12,12 +12,8 @@ const Note = () => {
         quas autem modi, vitae explicabo!
       </p>
       <div className="labels-ctn">
-        <span className="label">
-          <label className="label-chip br-full">Test</label>
-        </span>
-        <span className="label">
-          <label className="label-chip br-full">Core concept</label>
-        </span>
+        <label className="label-chip br-full">Test</label>
+        <label className="label-chip br-full">Core concept</label>
       </div>
       <div className="note-option-ctn">
         <span className="note-date">10 May 2022</span>

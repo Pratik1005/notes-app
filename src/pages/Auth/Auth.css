@@ -34,11 +34,7 @@ form.auth-form {
   padding-left: 0.5rem;
 }
 
-/* input[type="text"],
-input[type="email"],
-input[type="password"] */
-
-.input-field {
+input.input-field {
   width: 100%;
   padding: 0.5rem;
   font-family: inherit;
@@ -65,7 +61,7 @@ input:focus {
 .hide-password {
   position: absolute;
   right: 0.5rem;
-  bottom: 1rem;
+  bottom: 1.2rem;
 }
 
 /* login */
@@ -84,11 +80,6 @@ button.btn-icon-text-outline {
   margin: 0;
   background-color: var(--clr-white);
 }
-
-/* error */
-/* .error-msg {
-    color: var(--input-error);
-  } */
 
 @media screen and (max-width: 800px) {
   form.auth-form {
