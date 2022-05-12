@@ -8,7 +8,7 @@ const Header = () => {
         <span className="material-icons theme-icon cursor-pointer">
           dark_mode
         </span>
-        <div className="avatar-ctn br-full">
+        <div className="avatar-ctn br-full cursor-pointer">
           <img src={profilePic} alt="user" className="img-responsive" />
         </div>
       </div>
