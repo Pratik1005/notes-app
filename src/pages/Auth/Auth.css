@@ -1,0 +1,94 @@
+.auth-form-ctn {
+  background-color: var(--body-background);
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  height: 100vh;
+}
+
+form.auth-form {
+  background-color: var(--profile-ctn-background);
+  padding: 2rem 4rem;
+  width: 100%;
+  border-radius: 8px;
+  margin: 4rem auto;
+  max-width: 31.25rem;
+  box-shadow: var(--light-shadow);
+  color: var(--text-color);
+  height: fit-content;
+}
+
+.form-control {
+  padding-bottom: 1rem;
+  position: relative;
+}
+
+.form-control label {
+  display: block;
+  padding-bottom: 0.125rem;
+}
+
+.form-control label[for="remember-me"],
+.form-control label[for="terms-condition"] {
+  display: inline-block;
+  padding-left: 0.5rem;
+}
+
+input.input-field {
+  width: 100%;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: inherit;
+  border: 2px solid var(--light-gray);
+  border-radius: 6px;
+}
+
+input:focus {
+  border-color: var(--txt-dark);
+}
+
+.form-control button {
+  width: 100%;
+}
+
+.account-toggle a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--txt-dark);
+}
+
+.hide-password {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 1.2rem;
+}
+
+/* login */
+.forgot-pw {
+  padding-left: 3rem;
+  color: #a78bfa;
+}
+
+/* logout */
+.logout-btns {
+  display: flex;
+  gap: 1rem;
+}
+
+button.btn-icon-text-outline {
+  margin: 0;
+  background-color: var(--clr-white);
+}
+
+@media screen and (max-width: 800px) {
+  form.auth-form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .forgot-pw {
+    display: block;
+    padding: 0;
+  }
+}

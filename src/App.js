@@ -1,12 +1,42 @@
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer} from "react-toastify";
 import {Routes, Route} from "react-router-dom";
-import {Home} from "./pages";
+import {RequiresAuth} from "./components";
+import {Home, Notes, Archive, Trash, Login, SignUp} from "./pages";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App light-theme">
+      <ToastContainer autoClose={1000} />
       <Routes>
         <Route path={"/"} element={<Home />} />
+        <Route
+          path={"/notes"}
+          element={
+            <RequiresAuth>
+              <Notes />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path={"/archive"}
+          element={
+            <RequiresAuth>
+              <Archive />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path={"/trash"}
+          element={
+            <RequiresAuth>
+              <Trash />
+            </RequiresAuth>
+          }
+        />
+        <Route path={"/login"} element={<Login />} />
+        <Route path={"/signup"} element={<SignUp />} />
       </Routes>
     </div>
   );
