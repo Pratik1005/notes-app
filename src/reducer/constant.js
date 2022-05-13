@@ -1,1 +1,4 @@
-export const USER_ACTIONS = {};
+export const USER_ACTIONS = {
+  INITIAL_NOTES: "INITIAL_NOTES",
+  ADD_NEW_NOTE: "ADD_NEW_NOTE",
+};
