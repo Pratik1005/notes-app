@@ -1,31 +1,46 @@
 import {useState} from "react";
-import {toast} from "react-toastify";
-import {addNote} from "../services";
+import {addNote, editNote} from "../services";
 import {useAuth, useNotes} from "../context";
+import {isNoteEmpty} from "../utils";
+import {AddNoteOptions, EditNoteOptions} from "./index";
 
-const NoteModal = ({setIsAddNote}) => {
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteText, setNoteText] = useState("");
+const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
+  const [noteTitle, setNoteTitle] = useState(
+    noteData?.noteTitle ? noteData.noteTitle : ""
+  );
+  const [noteText, setNoteText] = useState(
+    noteData?.noteText ? noteData.noteText : ""
+  );
   const {auth} = useAuth();
   const {notesState, notesDispatch} = useNotes();
 
   const handleAddNote = () => {
-    if (noteTitle.trim().length > 0 && noteText.trim().length > 0) {
+    if (!isNoteEmpty(noteTitle, noteText)) {
       addNote(
         auth.token,
-        {noteTitle, noteText, date: new Date()},
+        {noteTitle, noteText, date: new Date().toString()},
         notesDispatch
       );
-      setIsAddNote((prev) => !prev);
-    } else {
-      toast.error("Title or text should not be empty");
+      setIsModalOpen((prev) => !prev);
+    }
+  };
+
+  const handleEditNote = () => {
+    if (!isNoteEmpty(noteTitle, noteText)) {
+      editNote(
+        auth.token,
+        noteData._id,
+        {noteTitle, noteText, date: new Date().toString},
+        notesDispatch
+      );
+      setIsModalOpen((prev) => !prev);
     }
   };
 
   return (
     <div
       className="note-modal-overlay"
-      onClick={() => setIsAddNote((prev) => !prev)}
+      onClick={() => setIsModalOpen((prev) => !prev)}
     >
       <div className="modal-content pd-sm" onClick={(e) => e.stopPropagation()}>
         <div className="input-title-ctn">
@@ -48,29 +63,11 @@ const NoteModal = ({setIsAddNote}) => {
           onChange={(e) => setNoteText(e.target.value)}
         />
         <div className="note-option-ctn">
-          <div className="note-option">
-            <span className="priority fw-bold">High</span>
-            <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
-              palette
-            </span>
-            <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
-              label
-            </span>
-            <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
-              archive
-            </span>
-            <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
-              delete
-            </span>
-          </div>
-          <div>
-            <span
-              className="modal-cta-btn cursor-pointer pd-xs br-sm"
-              onClick={handleAddNote}
-            >
-              Save
-            </span>
-          </div>
+          {isAddNote ? (
+            <AddNoteOptions handleAddNote={handleAddNote} />
+          ) : (
+            <EditNoteOptions handleEditNote={handleEditNote} />
+          )}
         </div>
       </div>
     </div>

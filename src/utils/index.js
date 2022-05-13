@@ -1,0 +1,1 @@
+export {isNoteEmpty} from "./isNoteEmpty";

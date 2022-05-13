@@ -24,7 +24,9 @@ const NavMenu = () => {
         >
           <span className="material-icons">add</span>Add Note
         </button>
-        {isAddNote && <NoteModal setIsAddNote={setIsAddNote} />}
+        {isAddNote && (
+          <NoteModal setIsModalOpen={setIsAddNote} isAddNote={isAddNote} />
+        )}
       </nav>
       <Footer />
     </aside>

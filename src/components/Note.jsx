@@ -1,5 +1,9 @@
+import {useState} from "react";
+import {NoteModal} from "./index";
+
 const Note = ({noteData}) => {
-  const {noteTitle, noteText, date} = noteData;
+  const {_id, noteTitle, noteText, date} = noteData;
+  const [isEditNote, setIsEditNote] = useState(false);
   return (
     <div className="note pd-sm">
       <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
@@ -24,12 +28,18 @@ const Note = ({noteData}) => {
           <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
             archive
           </span>
-          <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+          <span
+            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+            onClick={() => setIsEditNote((prev) => !prev)}
+          >
             edit
           </span>
           <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
             delete
           </span>
+          {isEditNote && (
+            <NoteModal setIsModalOpen={setIsEditNote} noteData={noteData} />
+          )}
         </div>
       </div>
     </div>
