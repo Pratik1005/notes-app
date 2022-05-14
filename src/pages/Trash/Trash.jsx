@@ -1,4 +1,4 @@
-import {NavMenu, Header} from "../../components";
+import {NavMenu, Header, NoNotes} from "../../components";
 
 const Trash = () => {
   return (
@@ -7,7 +7,9 @@ const Trash = () => {
       <section className="app-ctn">
         <NavMenu />
         <div className="notes-ctn">
-          <h2>Trash</h2>
+          <div className="all-notes">
+            <NoNotes icon="delete" text="No notes in trash" />
+          </div>
         </div>
       </section>
     </>

@@ -1,5 +1,5 @@
 import {useNotes} from "../../context";
-import {NavMenu, Header, Note} from "../../components";
+import {NavMenu, Header, Note, NoNotes} from "../../components";
 
 const Archive = () => {
   const {notesState} = useNotes();
@@ -15,7 +15,7 @@ const Archive = () => {
                 .reverse()
                 .map((item) => <Note key={item._id} noteData={item} />)
             ) : (
-              <h2>No Archives</h2>
+              <NoNotes icon="archive" text="Your archived notes appear here" />
             )}
           </div>
         </div>

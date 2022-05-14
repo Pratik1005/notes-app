@@ -6,3 +6,4 @@ export {RequiresAuth} from "./RequiresAuth";
 export {NoteModal} from "./NoteModal";
 export {AddNoteOptions} from "./AddNoteOptions";
 export {EditNoteOptions} from "./EditNoteOptions";
+export {NoNotes} from "./NoNotes";

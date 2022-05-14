@@ -1,5 +1,5 @@
 import "./Notes.css";
-import {NavMenu, Header, Note} from "../../components";
+import {NavMenu, Header, Note, NoNotes} from "../../components";
 import {useNotes} from "../../context";
 
 const Notes = () => {
@@ -23,7 +23,7 @@ const Notes = () => {
                 .reverse()
                 .map((item) => <Note key={item._id} noteData={item} />)
             ) : (
-              <h2>No notes</h2>
+              <NoNotes icon="description" text="Notes you add apper here" />
             )}
           </div>
         </div>
