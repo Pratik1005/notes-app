@@ -11,6 +11,7 @@ const UnarchiveIcon = ({noteId}) => {
   return (
     <span
       className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+      title="Unarchive"
       onClick={handleUnarchiveNote}
     >
       unarchive

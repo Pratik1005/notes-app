@@ -10,6 +10,7 @@ const ArchiveIcon = ({noteId, noteData}) => {
   return (
     <span
       className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+      title="Archive"
       onClick={handleArchiveNote}
     >
       archive

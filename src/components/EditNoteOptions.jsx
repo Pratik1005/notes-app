@@ -7,10 +7,16 @@ const EditNoteOptions = ({handleEditNote, noteData}) => {
     <>
       <div className="note-option">
         <span className="priority fw-bold">High</span>
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+        <span
+          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+          title="Background options"
+        >
           palette
         </span>
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+        <span
+          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+          title="Add label"
+        >
           label
         </span>
         {location.pathname === "/archive" ? (
@@ -18,7 +24,10 @@ const EditNoteOptions = ({handleEditNote, noteData}) => {
         ) : (
           <ArchiveIcon noteId={noteData._id} noteData={noteData} />
         )}
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+        <span
+          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+          title="Delete note"
+        >
           delete
         </span>
       </div>
