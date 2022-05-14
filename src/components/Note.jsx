@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {useAuth, useNotes} from "../context";
 import {addToArchive, restoreFromArchive} from "../services";
+import {dateOnNote} from "../utils";
 import {NoteModal, ArchiveIcon, UnarchiveIcon} from "./index";
 
 const Note = ({noteData}) => {
@@ -30,7 +31,7 @@ const Note = ({noteData}) => {
         <label className="label-chip br-full">Core concept</label>
       </div>
       <div className="note-option-ctn">
-        <span className="note-date">{date}</span>
+        <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
           <span className="priority fw-bold">High</span>
           <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
