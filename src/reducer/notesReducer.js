@@ -9,6 +9,7 @@ const notesReducer = (state, action) => {
     // case USER_ACTIONS.ADD_TO_TRASH:
     //   return {...state, trash: [...state.trash, action.payload]};
     case USER_ACTIONS.ADD_TO_ARCHIVE:
+    case USER_ACTIONS.RESTORE_FROM_ARCHIVE:
       return {
         ...state,
         notes: action.payload.notes,

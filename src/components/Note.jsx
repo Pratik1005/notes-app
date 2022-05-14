@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {useAuth, useNotes} from "../context";
-import {addToArchive} from "../services";
+import {addToArchive, restoreFromArchive} from "../services";
 import {NoteModal} from "./index";
 
 const Note = ({noteData}) => {
@@ -9,7 +9,6 @@ const Note = ({noteData}) => {
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
   const location = useLocation();
-  console.log(location);
   const [isEditNote, setIsEditNote] = useState(false);
 
   const handleDeleteNote = () => {
@@ -18,6 +17,10 @@ const Note = ({noteData}) => {
 
   const handleArchiveNote = () => {
     addToArchive(auth.token, _id, noteData, notesDispatch);
+  };
+
+  const handleUnarchiveNote = () => {
+    restoreFromArchive(auth.token, _id, notesDispatch);
   };
   return (
     <div className="note pd-sm">
@@ -41,7 +44,10 @@ const Note = ({noteData}) => {
             label
           </span>
           {location.pathname === "/archive" ? (
-            <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+            <span
+              className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+              onClick={handleUnarchiveNote}
+            >
               unarchive
             </span>
           ) : (

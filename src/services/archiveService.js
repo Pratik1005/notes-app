@@ -17,4 +17,24 @@ const addToArchive = async (token, noteId, note, notesDispatch) => {
   }
 };
 
-export {addToArchive};
+const restoreFromArchive = async (token, noteId, notesDispatch) => {
+  try {
+    const response = await axios.post(
+      `/api/archives/restore/${noteId}`,
+      {},
+      {
+        headers: {authorization: token},
+      }
+    );
+    notesDispatch({
+      type: USER_ACTIONS.RESTORE_FROM_ARCHIVE,
+      payload: response.data,
+    });
+    toast.success("Note unarchived");
+  } catch (err) {
+    console.error("restore from archive", err);
+    toast.error("Error in note unarchive");
+  }
+};
+
+export {addToArchive, restoreFromArchive};
