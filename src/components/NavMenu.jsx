@@ -3,19 +3,21 @@ import {NavLink} from "react-router-dom";
 import {Footer, NoteModal} from "./index";
 const NavMenu = () => {
   const [isAddNote, setIsAddNote] = useState(false);
+  const getActiveStyle = ({isActive}) =>
+    isActive ? {backgroundColor: "var(--menu-hover)"} : null;
   return (
     <aside className="side-menu">
       <nav className="menu-ctn">
-        <NavLink to="/notes" className="menu-link">
+        <NavLink to="/notes" style={getActiveStyle} className="menu-link">
           <span className="material-icons menu-icon">home</span> Notes
         </NavLink>
-        <NavLink to="/notes" className="menu-link">
+        <div className="menu-link">
           <span className="material-icons menu-icon">edit</span> Edit labels
-        </NavLink>
-        <NavLink to="/archive" className="menu-link">
+        </div>
+        <NavLink to="/archive" style={getActiveStyle} className="menu-link">
           <span className="material-icons menu-icon">archive</span> Archive
         </NavLink>
-        <NavLink to="/trash" className="menu-link">
+        <NavLink to="/trash" style={getActiveStyle} className="menu-link">
           <span className="material-icons menu-icon">delete</span> Trash
         </NavLink>
         <button

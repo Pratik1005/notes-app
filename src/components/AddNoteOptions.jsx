@@ -3,14 +3,17 @@ const AddNoteOptions = ({handleAddNote}) => {
     <>
       <div className="note-option">
         <span className="priority fw-bold">High</span>
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+        <span
+          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+          title="Background options"
+        >
           palette
         </span>
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
+        <span
+          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+          title="Add label"
+        >
           label
-        </span>
-        <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
-          archive
         </span>
       </div>
       <div>

@@ -12,7 +12,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
     noteData?.noteText ? noteData.noteText : ""
   );
   const {auth} = useAuth();
-  const {notesState, notesDispatch} = useNotes();
+  const {notesDispatch} = useNotes();
 
   const handleAddNote = () => {
     if (!isNoteEmpty(noteTitle, noteText)) {
@@ -66,7 +66,10 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           {isAddNote ? (
             <AddNoteOptions handleAddNote={handleAddNote} />
           ) : (
-            <EditNoteOptions handleEditNote={handleEditNote} />
+            <EditNoteOptions
+              handleEditNote={handleEditNote}
+              noteData={noteData}
+            />
           )}
         </div>
       </div>

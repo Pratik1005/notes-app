@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {useAuth, useNotes} from "../context";
 import {addToArchive, restoreFromArchive} from "../services";
-import {NoteModal} from "./index";
+import {NoteModal, ArchiveIcon, UnarchiveIcon} from "./index";
 
 const Note = ({noteData}) => {
   const {_id, noteTitle, noteText, date} = noteData;
@@ -10,10 +10,6 @@ const Note = ({noteData}) => {
   const {notesDispatch} = useNotes();
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
-
-  const handleDeleteNote = () => {
-    // notesDispatch({type: USER_ACTIONS.ADD_TO_TRASH, payload: noteData})
-  };
 
   const handleArchiveNote = () => {
     addToArchive(auth.token, _id, noteData, notesDispatch);
@@ -44,19 +40,9 @@ const Note = ({noteData}) => {
             label
           </span>
           {location.pathname === "/archive" ? (
-            <span
-              className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-              onClick={handleUnarchiveNote}
-            >
-              unarchive
-            </span>
+            <UnarchiveIcon noteId={_id} />
           ) : (
-            <span
-              className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-              onClick={handleArchiveNote}
-            >
-              archive
-            </span>
+            <ArchiveIcon noteId={_id} noteData={noteData} />
           )}
           <span
             className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
@@ -64,10 +50,7 @@ const Note = ({noteData}) => {
           >
             edit
           </span>
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            onClick={handleDeleteNote}
-          >
+          <span className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer">
             delete
           </span>
           {isEditNote && (
