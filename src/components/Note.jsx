@@ -1,24 +1,13 @@
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
-import {useAuth, useNotes} from "../context";
-import {addToArchive, restoreFromArchive} from "../services";
 import {dateOnNote} from "../utils";
 import {NoteModal, ArchiveIcon, UnarchiveIcon} from "./index";
 
 const Note = ({noteData}) => {
   const {_id, noteTitle, noteText, date} = noteData;
-  const {auth} = useAuth();
-  const {notesDispatch} = useNotes();
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
 
-  const handleArchiveNote = () => {
-    addToArchive(auth.token, _id, noteData, notesDispatch);
-  };
-
-  const handleUnarchiveNote = () => {
-    restoreFromArchive(auth.token, _id, notesDispatch);
-  };
   return (
     <div className="note pd-sm">
       <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
