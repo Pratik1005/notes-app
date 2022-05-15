@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {dateOnNote} from "../utils";
-import {NoteModal, ArchiveIcon, UnarchiveIcon} from "./index";
+import {NoteModal, ArchiveIcon, UnarchiveIcon, DeleteIcon} from "./index";
 
 const Note = ({noteData}) => {
   const {_id, noteTitle, noteText, date} = noteData;
@@ -47,12 +47,7 @@ const Note = ({noteData}) => {
           >
             edit
           </span>
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            title="Delete note"
-          >
-            delete
-          </span>
+          <DeleteIcon noteId={_id} />
           {isEditNote && (
             <NoteModal setIsModalOpen={setIsEditNote} noteData={noteData} />
           )}

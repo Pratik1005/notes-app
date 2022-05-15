@@ -9,3 +9,4 @@ export {EditNoteOptions} from "./EditNoteOptions";
 export {NoNotes} from "./NoNotes";
 export {ArchiveIcon} from "./icon components/ArchiveIcon";
 export {UnarchiveIcon} from "./icon components/UnarchiveIcon";
+export {DeleteIcon} from "./icon components/DeleteIcon";

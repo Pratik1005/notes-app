@@ -3,9 +3,13 @@ import {toast} from "react-toastify";
 
 const addToTrash = async (token, noteId, notesDispatch) => {
   try {
-    const response = await axios.post(`/notes/trash/${noteId}`, {
-      headers: {authorization: token},
-    });
+    const response = await axios.post(
+      `/api/notes/trash/${noteId}`,
+      {},
+      {
+        headers: {authorization: token},
+      }
+    );
     console.log(response);
     toast.success("Added to trash");
   } catch (err) {
