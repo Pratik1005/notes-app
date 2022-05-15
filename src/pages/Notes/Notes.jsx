@@ -1,7 +1,9 @@
 import "./Notes.css";
-import {NavMenu, Header, Note} from "../../components";
+import {NavMenu, Header, Note, NoNotes} from "../../components";
+import {useNotes} from "../../context";
 
 const Notes = () => {
+  const {notesState} = useNotes();
   return (
     <>
       <Header />
@@ -16,8 +18,13 @@ const Notes = () => {
             </span>
           </div>
           <div className="all-notes">
-            <Note />
-            <Note />
+            {notesState.notes.length > 0 ? (
+              [...notesState.notes]
+                .reverse()
+                .map((item) => <Note key={item._id} noteData={item} />)
+            ) : (
+              <NoNotes icon="description" text="Notes you add apper here" />
+            )}
           </div>
         </div>
       </section>

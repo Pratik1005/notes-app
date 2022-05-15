@@ -8,7 +8,7 @@ import {Home, Notes, Archive, Trash, Login, SignUp} from "./pages";
 function App() {
   return (
     <div className="App light-theme">
-      <ToastContainer autoClose={1000} />
+      <ToastContainer autoClose={1200} />
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route
