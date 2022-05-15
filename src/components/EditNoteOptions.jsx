@@ -1,5 +1,5 @@
 import {useLocation} from "react-router-dom";
-import {ArchiveIcon, UnarchiveIcon} from "./index";
+import {ArchiveIcon, UnarchiveIcon, DeleteIcon} from "./index";
 
 const EditNoteOptions = ({handleEditNote, noteData}) => {
   const location = useLocation();
@@ -24,12 +24,7 @@ const EditNoteOptions = ({handleEditNote, noteData}) => {
         ) : (
           <ArchiveIcon noteId={noteData._id} noteData={noteData} />
         )}
-        <span
-          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-          title="Delete note"
-        >
-          delete
-        </span>
+        <DeleteIcon noteId={noteData._id} />
       </div>
       <div>
         <span
