@@ -9,6 +9,7 @@ const addNote = async (token, note, notesDispatch) => {
       {note},
       {headers: {authorization: token}}
     );
+    console.log(response);
     notesDispatch({
       type: USER_ACTIONS.ADD_NEW_NOTE,
       payload: response.data.notes,

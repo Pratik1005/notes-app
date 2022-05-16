@@ -79,7 +79,12 @@ input.search-input {
   padding: 0.5rem;
 }
 
-.icon-hover:hover {
+.small-icon-hover {
+  padding: 4px;
+}
+
+.icon-hover:hover,
+.small-icon-hover:hover {
   background-color: var(--menu-hover);
 }
 

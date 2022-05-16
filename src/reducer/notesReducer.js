@@ -1,3 +1,4 @@
+import {v4 as uuid} from "uuid";
 import {USER_ACTIONS} from "./constant";
 
 const notesReducer = (state, action) => {
@@ -22,6 +23,25 @@ const notesReducer = (state, action) => {
       };
     case USER_ACTIONS.DELETE_FROM_TRASH:
       return {...state, trash: action.payload};
+    case USER_ACTIONS.ADD_NEW_LABEL:
+      return {
+        ...state,
+        labels: [...state.labels, {id: uuid(), label: action.payload}],
+      };
+    case USER_ACTIONS.DELETE_LABEL:
+      return {
+        ...state,
+        labels: state.labels.filter((item) => item.id !== action.payload),
+      };
+    case USER_ACTIONS.RENAME_LABEL:
+      return {
+        ...state,
+        labels: state.labels.map((item) =>
+          item.id === action.payload.id
+            ? {id: item.id, label: action.payload.newLabel}
+            : item
+        ),
+      };
     default:
       return state;
   }

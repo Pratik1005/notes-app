@@ -8,6 +8,7 @@ const initialValue = {
   notes: [],
   archives: [],
   trash: [],
+  labels: [],
 };
 
 const token = localStorage.getItem("token");
