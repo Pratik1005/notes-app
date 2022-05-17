@@ -11,6 +11,15 @@
   cursor: pointer;
 }
 
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.just-con-sp-bt {
+  justify-content: space-between;
+}
+
 /* top bar/header */
 .top-header {
   background-color: var(--menu-background);
@@ -125,6 +134,7 @@ footer p.copyright {
   border-radius: 8px;
   margin-top: 10rem;
   height: fit-content;
+  position: relative;
 }
 
 .input-title-ctn {
@@ -146,4 +156,29 @@ footer p.copyright {
 
 .modal-cta-btn:hover {
   background-color: var(--menu-hover);
+}
+
+/* Edit label modal */
+.label-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--profile-ctn-background);
+  max-width: 18.75rem;
+  width: 100%;
+  height: fit-content;
+  margin-top: 10rem;
+}
+
+input.input-no-border {
+  border: none;
+  width: 100%;
+}
+
+input.input-no-border:focus {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.label-list-icon {
+  font-size: 1.25rem;
 }

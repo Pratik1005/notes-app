@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import {ToastContainer} from "react-toastify";
 import {Routes, Route} from "react-router-dom";
 import {RequiresAuth} from "./components";
-import {Home, Notes, Archive, Trash, Login, SignUp} from "./pages";
+import {Home, Notes, Archive, Trash, Login, SignUp, Label} from "./pages";
 
 function App() {
   return (
@@ -24,6 +24,14 @@ function App() {
           element={
             <RequiresAuth>
               <Archive />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path={"/label/:labelName"}
+          element={
+            <RequiresAuth>
+              <Label />
             </RequiresAuth>
           }
         />

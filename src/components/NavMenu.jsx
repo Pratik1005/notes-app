@@ -1,8 +1,13 @@
 import {useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Footer, NoteModal} from "./index";
+import {useNotes} from "../context";
+import {Footer, NoteModal, LabelModal} from "./index";
+
 const NavMenu = () => {
   const [isAddNote, setIsAddNote] = useState(false);
+  const [isEditLabel, setIsEditLabel] = useState(false);
+  const {notesState} = useNotes();
+
   const getActiveStyle = ({isActive}) =>
     isActive ? {backgroundColor: "var(--menu-hover)"} : null;
   return (
@@ -11,7 +16,20 @@ const NavMenu = () => {
         <NavLink to="/notes" style={getActiveStyle} className="menu-link">
           <span className="material-icons menu-icon">home</span> Notes
         </NavLink>
-        <div className="menu-link">
+        {notesState.labels.map((item) => (
+          <NavLink
+            to={`/label/${item.label}`}
+            style={getActiveStyle}
+            className="menu-link"
+            key={item.id}
+          >
+            <span className="material-icons menu-icon">label</span> {item.label}
+          </NavLink>
+        ))}
+        <div
+          className="menu-link cursor-pointer"
+          onClick={() => setIsEditLabel((prev) => !prev)}
+        >
           <span className="material-icons menu-icon">edit</span> Edit labels
         </div>
         <NavLink to="/archive" style={getActiveStyle} className="menu-link">
@@ -29,6 +47,7 @@ const NavMenu = () => {
         {isAddNote && (
           <NoteModal setIsModalOpen={setIsAddNote} isAddNote={isAddNote} />
         )}
+        {isEditLabel && <LabelModal toggleLabelModal={setIsEditLabel} />}
       </nav>
       <Footer />
     </aside>

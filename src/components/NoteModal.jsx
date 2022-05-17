@@ -18,7 +18,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
     if (!isNoteEmpty(noteTitle, noteText)) {
       addNote(
         auth.token,
-        {noteTitle, noteText, date: new Date().toString()},
+        {noteTitle, noteText, date: new Date().toString(), labels: []},
         notesDispatch
       );
       setIsModalOpen((prev) => !prev);
@@ -62,6 +62,15 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
         />
+        {noteData?.labels.length > 0 && (
+          <div className="labels-ctn">
+            {noteData.labels.map((item, index) => (
+              <label className="label-chip br-full" key={index}>
+                {item}
+              </label>
+            ))}
+          </div>
+        )}
         <div className="note-option-ctn">
           {isAddNote ? (
             <AddNoteOptions handleAddNote={handleAddNote} />
