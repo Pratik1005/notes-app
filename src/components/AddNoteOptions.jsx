@@ -1,3 +1,5 @@
+import {LabelIcon} from "./index";
+
 const AddNoteOptions = ({handleAddNote}) => {
   return (
     <>
@@ -8,12 +10,6 @@ const AddNoteOptions = ({handleAddNote}) => {
           title="Background options"
         >
           palette
-        </span>
-        <span
-          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-          title="Add label"
-        >
-          label
         </span>
       </div>
       <div>

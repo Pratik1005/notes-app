@@ -62,6 +62,15 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
         />
+        {noteData?.labels.length > 0 && (
+          <div className="labels-ctn">
+            {noteData.labels.map((item, index) => (
+              <label className="label-chip br-full" key={index}>
+                {item}
+              </label>
+            ))}
+          </div>
+        )}
         <div className="note-option-ctn">
           {isAddNote ? (
             <AddNoteOptions handleAddNote={handleAddNote} />

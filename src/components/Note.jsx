@@ -38,7 +38,7 @@ const Note = ({noteData}) => {
           >
             palette
           </span>
-          <LabelIcon noteData={noteData} />
+          <LabelIcon noteData={noteData} styleData={{right: "-20px"}} />
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />
           ) : (

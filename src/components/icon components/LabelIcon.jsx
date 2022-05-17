@@ -1,11 +1,10 @@
 import {useState} from "react";
 import {useNotes} from "../../context";
-import {USER_ACTIONS} from "../../reducer";
 import {isLabelInNote} from "../../utils";
 import {editNote} from "../../services";
 import {useAuth} from "../../context";
 
-const LabelIcon = ({noteData}) => {
+const LabelIcon = ({noteData, styleData}) => {
   const [isAddLabel, setIsAddLabel] = useState(false);
   const {notesState, notesDispatch} = useNotes();
   const {auth} = useAuth();
@@ -40,7 +39,7 @@ const LabelIcon = ({noteData}) => {
         label
       </span>
       {isAddLabel && (
-        <div className="label-list-card pd-sm br-sm">
+        <div className="label-list-card pd-sm br-sm" style={styleData}>
           <p className="pd-bottom-md">Select Label</p>
           {notesState.labels.map((item) => (
             <div className="flex-align-center pd-bottom-md" key={item.id}>

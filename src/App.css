@@ -134,6 +134,7 @@ footer p.copyright {
   border-radius: 8px;
   margin-top: 10rem;
   height: fit-content;
+  position: relative;
 }
 
 .input-title-ctn {
