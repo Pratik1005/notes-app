@@ -7,6 +7,7 @@ import {
   UnarchiveIcon,
   DeleteIcon,
   LabelIcon,
+  PaletteIcon,
 } from "./index";
 
 const Note = ({noteData}) => {
@@ -32,12 +33,7 @@ const Note = ({noteData}) => {
         <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
           <span className="priority fw-bold">High</span>
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            title="Background options"
-          >
-            palette
-          </span>
+          <PaletteIcon />
           <LabelIcon noteData={noteData} styleData={{right: "-20px"}} />
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />

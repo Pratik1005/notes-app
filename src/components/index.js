@@ -14,3 +14,4 @@ export {TrashedNote} from "./TrashedNote";
 export {LabelModal} from "./LabelModal";
 export {LabelInput} from "./LabelInput";
 export {LabelIcon} from "./icon components/LabelIcon";
+export {PaletteIcon} from "./icon components/PaletteIcon";

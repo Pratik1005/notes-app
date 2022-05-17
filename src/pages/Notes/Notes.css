@@ -122,3 +122,43 @@ input.search-input {
 .label-name {
   padding-left: 8px;
 }
+
+/* color palette */
+.color-palette {
+  background-color: var(--body-background);
+  position: absolute;
+  gap: 8px;
+  right: 9rem;
+  bottom: -3.1rem;
+  box-shadow: var(--dark-shadow);
+}
+
+.color-ring {
+  width: 2rem;
+  height: 2rem;
+}
+
+.color-ring:hover {
+  border: 1px solid var(--text-color);
+}
+
+.default-color {
+  border: 1px solid var(--input-border);
+  padding: 3px;
+}
+
+.color-ring-red {
+  background-color: #f28b82;
+}
+
+.color-ring-orange {
+  background-color: #fbbc04;
+}
+
+.color-ring-yellow {
+  background-color: #fff475;
+}
+
+.color-ring-blue {
+  background-color: #aecbfa;
+}
