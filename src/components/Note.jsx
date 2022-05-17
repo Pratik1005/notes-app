@@ -1,10 +1,16 @@
 import {useState} from "react";
 import {useLocation} from "react-router-dom";
 import {dateOnNote} from "../utils";
-import {NoteModal, ArchiveIcon, UnarchiveIcon, DeleteIcon} from "./index";
+import {
+  NoteModal,
+  ArchiveIcon,
+  UnarchiveIcon,
+  DeleteIcon,
+  LabelIcon,
+} from "./index";
 
 const Note = ({noteData}) => {
-  const {_id, noteTitle, noteText, date} = noteData;
+  const {_id, noteTitle, noteText, date, labels} = noteData;
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
 
@@ -16,8 +22,11 @@ const Note = ({noteData}) => {
       <h4 className="pd-bottom-md">{noteTitle}</h4>
       <p>{noteText}</p>
       <div className="labels-ctn">
-        <label className="label-chip br-full">Test</label>
-        <label className="label-chip br-full">Core concept</label>
+        {labels.map((item, index) => (
+          <label className="label-chip br-full" key={index}>
+            {item}
+          </label>
+        ))}
       </div>
       <div className="note-option-ctn">
         <span className="note-date">{dateOnNote(date)}</span>
@@ -29,12 +38,7 @@ const Note = ({noteData}) => {
           >
             palette
           </span>
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            title="Add label"
-          >
-            label
-          </span>
+          <LabelIcon noteData={noteData} />
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />
           ) : (

@@ -42,6 +42,15 @@ const notesReducer = (state, action) => {
             : item
         ),
       };
+    case USER_ACTIONS.ADD_LABEL_TO_NOTE:
+      return {
+        ...state,
+        notes: state.notes.map((item) =>
+          item.id === action.payload.id
+            ? {...item, labels: [...item.labels, action.payload.labelToAdd]}
+            : item
+        ),
+      };
     default:
       return state;
   }

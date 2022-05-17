@@ -18,7 +18,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
     if (!isNoteEmpty(noteTitle, noteText)) {
       addNote(
         auth.token,
-        {noteTitle, noteText, date: new Date().toString()},
+        {noteTitle, noteText, date: new Date().toString(), labels: []},
         notesDispatch
       );
       setIsModalOpen((prev) => !prev);

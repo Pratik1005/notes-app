@@ -1,10 +1,12 @@
 import {useState} from "react";
 import {NavLink} from "react-router-dom";
+import {useNotes} from "../context";
 import {Footer, NoteModal, LabelModal} from "./index";
 
 const NavMenu = () => {
   const [isAddNote, setIsAddNote] = useState(false);
   const [isEditLabel, setIsEditLabel] = useState(false);
+  const {notesState} = useNotes();
 
   const getActiveStyle = ({isActive}) =>
     isActive ? {backgroundColor: "var(--menu-hover)"} : null;
@@ -14,6 +16,16 @@ const NavMenu = () => {
         <NavLink to="/notes" style={getActiveStyle} className="menu-link">
           <span className="material-icons menu-icon">home</span> Notes
         </NavLink>
+        {notesState.labels.map((item) => (
+          <NavLink
+            to={`/label/${item.label}`}
+            style={getActiveStyle}
+            className="menu-link"
+            key={item.id}
+          >
+            <span className="material-icons menu-icon">label</span> {item.label}
+          </NavLink>
+        ))}
         <div
           className="menu-link cursor-pointer"
           onClick={() => setIsEditLabel((prev) => !prev)}
