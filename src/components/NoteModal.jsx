@@ -11,14 +11,23 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
   const [noteText, setNoteText] = useState(
     noteData?.noteText ? noteData.noteText : ""
   );
+  const [noteBackground, setNoteBackground] = useState(
+    noteData?.noteBgColor ? noteData.noteBgColor : ""
+  );
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
-
+  console.log(noteData);
   const handleAddNote = () => {
     if (!isNoteEmpty(noteTitle, noteText)) {
       addNote(
         auth.token,
-        {noteTitle, noteText, date: new Date().toString(), labels: []},
+        {
+          noteTitle,
+          noteText,
+          date: new Date().toString(),
+          labels: [],
+          noteBgColor: noteBackground,
+        },
         notesDispatch
       );
       setIsModalOpen((prev) => !prev);
@@ -30,10 +39,16 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
       editNote(
         auth.token,
         noteData._id,
-        {noteTitle, noteText, date: new Date().toString},
+        {
+          noteTitle,
+          noteText,
+          date: new Date().toString,
+          noteBgColor: noteBackground,
+        },
         notesDispatch
       );
       setIsModalOpen((prev) => !prev);
+      console.log("edit note", noteBackground);
     }
   };
 
@@ -42,12 +57,15 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
       className="note-modal-overlay"
       onClick={() => setIsModalOpen((prev) => !prev)}
     >
-      <div className="modal-content pd-sm" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`modal-content pd-sm ${noteBackground}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="input-title-ctn">
           <input
             type="text"
             placeholder="Title"
-            className="input-field"
+            className={`input-field ${noteBackground}`}
             autoFocus
             value={noteTitle}
             onChange={(e) => setNoteTitle(e.target.value)}
@@ -57,7 +75,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           </span>
         </div>
         <textarea
-          className="note-textarea"
+          className={`note-textarea ${noteBackground}`}
           placeholder="Take a note..."
           value={noteText}
           onChange={(e) => setNoteText(e.target.value)}
@@ -73,11 +91,15 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
         )}
         <div className="note-option-ctn">
           {isAddNote ? (
-            <AddNoteOptions handleAddNote={handleAddNote} />
+            <AddNoteOptions
+              handleAddNote={handleAddNote}
+              setNoteBackground={setNoteBackground}
+            />
           ) : (
             <EditNoteOptions
               handleEditNote={handleEditNote}
               noteData={noteData}
+              setNoteBackground={setNoteBackground}
             />
           )}
         </div>

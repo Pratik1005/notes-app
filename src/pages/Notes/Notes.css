@@ -131,6 +131,7 @@ input.search-input {
   right: 9rem;
   bottom: -3.1rem;
   box-shadow: var(--dark-shadow);
+  z-index: 1;
 }
 
 .color-ring {

@@ -1,18 +1,22 @@
 import {useLocation} from "react-router-dom";
-import {ArchiveIcon, UnarchiveIcon, DeleteIcon, LabelIcon} from "./index";
+import {
+  ArchiveIcon,
+  UnarchiveIcon,
+  DeleteIcon,
+  LabelIcon,
+  PaletteIcon,
+} from "./index";
 
-const EditNoteOptions = ({handleEditNote, noteData}) => {
+const EditNoteOptions = ({handleEditNote, noteData, setNoteBackground}) => {
   const location = useLocation();
   return (
     <>
       <div className="note-option">
         <span className="priority fw-bold">High</span>
-        <span
-          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-          title="Background options"
-        >
-          palette
-        </span>
+        <PaletteIcon
+          noteId={noteData._id}
+          setNoteBackground={setNoteBackground}
+        />
         <LabelIcon noteData={noteData} styleData={{left: "10.3rem"}} />
         {location.pathname === "/archive" ? (
           <UnarchiveIcon noteId={noteData._id} />

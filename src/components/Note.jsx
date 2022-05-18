@@ -1,6 +1,8 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import {useNotes} from "../context";
 import {dateOnNote} from "../utils";
+import {USER_ACTIONS} from "../reducer";
 import {
   NoteModal,
   ArchiveIcon,
@@ -11,12 +13,21 @@ import {
 } from "./index";
 
 const Note = ({noteData}) => {
-  const {_id, noteTitle, noteText, date, labels} = noteData;
+  const {_id, noteTitle, noteText, date, labels, noteBgColor} = noteData;
   const location = useLocation();
+  const {notesDispatch} = useNotes();
   const [isEditNote, setIsEditNote] = useState(false);
+  const [noteBackground, setNoteBackground] = useState(noteBgColor);
+  console.log("note", noteBackground, noteBgColor);
+  // useEffect(() => {
+  //   notesDispatch({
+  //     type: USER_ACTIONS.CHANGE_NOTE_COLOR,
+  //     payload: {id: noteData._id, newColor: noteBackground},
+  //   });
+  // }, [noteBackground]);
 
   return (
-    <div className="note pd-sm">
+    <div className={`note pd-sm ${noteBgColor}`}>
       <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
         push_pin
       </span>
@@ -33,7 +44,10 @@ const Note = ({noteData}) => {
         <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
           <span className="priority fw-bold">High</span>
-          <PaletteIcon />
+          <PaletteIcon
+            setNoteBackground={setNoteBackground}
+            noteId={noteData._id}
+          />
           <LabelIcon noteData={noteData} styleData={{right: "-20px"}} />
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />

@@ -51,6 +51,15 @@ const notesReducer = (state, action) => {
             : item
         ),
       };
+    case USER_ACTIONS.CHANGE_NOTE_COLOR:
+      return {
+        ...state,
+        notes: state.notes.map((item) =>
+          item._id === action.payload.id
+            ? {...item, noteBgColor: action.payload.newColor}
+            : item
+        ),
+      };
     default:
       return state;
   }

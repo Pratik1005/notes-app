@@ -1,16 +1,11 @@
-import {LabelIcon} from "./index";
+import {PaletteIcon} from "./index";
 
-const AddNoteOptions = ({handleAddNote}) => {
+const AddNoteOptions = ({handleAddNote, setNoteBackground}) => {
   return (
     <>
       <div className="note-option">
         <span className="priority fw-bold">High</span>
-        <span
-          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-          title="Background options"
-        >
-          palette
-        </span>
+        <PaletteIcon setNoteBackground={setNoteBackground} />
       </div>
       <div>
         <span
