@@ -1,9 +1,24 @@
 import "./Notes.css";
+import {useState} from "react";
+import {getNotesByPriority, getNotesByLabel} from "../../utils";
 import {NavMenu, Header, Note, NoNotes, FilterIcon} from "../../components";
 import {useNotes} from "../../context";
 
 const Notes = () => {
+  const [filterData, setFilterData] = useState({
+    currentPriority: "",
+    currentLabel: "",
+    sortBy: "",
+  });
   const {notesState} = useNotes();
+
+  const priorityNotes = getNotesByPriority(
+    notesState.notes,
+    filterData.currentPriority
+  );
+  console.log("priority notes", priorityNotes);
+  const labelNotes = getNotesByLabel(priorityNotes, filterData.currentLabel);
+  console.log("label notes", labelNotes);
   return (
     <>
       <Header />
@@ -13,7 +28,7 @@ const Notes = () => {
           <div className="search-bar">
             <span className="material-icons search-icon">search</span>
             <input type="text" className="search-input" placeholder="Search" />
-            <FilterIcon />
+            <FilterIcon filterData={filterData} setFilterData={setFilterData} />
           </div>
           <div className="all-notes">
             {notesState.notes.length > 0 ? (

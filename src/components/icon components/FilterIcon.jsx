@@ -1,7 +1,25 @@
 import {useState} from "react";
+import {useNotes} from "../../context";
 
-const FilterIcon = () => {
+const allPriority = ["Low", "Medium", "High"];
+
+const FilterIcon = ({filterData, setFilterData}) => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const {notesState} = useNotes();
+
+  const isFilterActive = (item, currentCategory) => {
+    if (currentCategory === item) {
+      return "filter-select";
+    }
+  };
+
+  const handlePriorityFilter = (priority) => {
+    setFilterData((prev) => ({...prev, currentPriority: priority}));
+  };
+
+  const handleLabelFilter = (label) => {
+    setFilterData((prev) => ({...prev, currentLabel: label}));
+  };
   return (
     <>
       <span
@@ -18,14 +36,33 @@ const FilterIcon = () => {
           </div>
           <div className="filter-section flex-align-center">
             <span>Priority:</span>
-            <span className="fs-14 cursor-pointer filter-label">Low</span>
-            <span className="fs-14 cursor-pointer filter-label">Medium</span>
-            <span className="fs-14 cursor-pointer filter-label">High</span>
+            {allPriority.map((item, index) => (
+              <span
+                key={index}
+                className={`fs-14 cursor-pointer filter-label ${isFilterActive(
+                  item,
+                  filterData.currentPriority
+                )}`}
+                onClick={() => handlePriorityFilter(item)}
+              >
+                {item}
+              </span>
+            ))}
           </div>
           <div className="filter-section flex-align-center">
             <span>Labels:</span>
-            <span className="fs-14 cursor-pointer filter-label">React</span>
-            <span className="fs-14 cursor-pointer filter-label">Node</span>
+            {notesState.labels.map((item) => (
+              <span
+                key={item.id}
+                className={`fs-14 cursor-pointer filter-label ${isFilterActive(
+                  item.label,
+                  filterData.currentLabel
+                )}`}
+                onClick={() => handleLabelFilter(item.label)}
+              >
+                {item.label}
+              </span>
+            ))}
           </div>
           <div className="filter-section flex-align-center">
             <p>Sor by date</p>

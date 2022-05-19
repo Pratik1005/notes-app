@@ -194,6 +194,7 @@ input.search-input {
   width: 16.8rem;
   height: 12.5rem;
   overflow-y: auto;
+  z-index: 1;
 }
 
 .filter-section {
@@ -205,4 +206,9 @@ input.search-input {
   padding: 2px 5px;
   background-color: var(--menu-hover);
   border-radius: 4px;
+}
+
+.filter-select {
+  background-color: var(--clr-primary);
+  color: #fff;
 }
