@@ -13,11 +13,17 @@ const getNotesByLabel = (notes, label) => {
 };
 
 const getNotesByDate = (notes, sortBy) => {
-  if (sortBy === "newest") {
-    return [...notes].sort((note1, note2) => note2.date - note1.date);
+  if (sortBy === "Newest") {
+    return [...notes].sort(
+      (note1, note2) =>
+        new Date(note2.date.toString()) - new Date(note1.date.toString())
+    );
   }
-  if (sortBy === "oldest") {
-    return [...notes].sort((note1, note2) => note1.date - note2.date);
+  if (sortBy === "Oldest") {
+    return [...notes].sort(
+      (note1, note2) =>
+        new Date(note1.date.toString()) - new Date(note2.date.toString())
+    );
   }
   return notes;
 };

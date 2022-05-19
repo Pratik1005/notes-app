@@ -2,6 +2,7 @@ import {useState} from "react";
 import {useNotes} from "../../context";
 
 const allPriority = ["Low", "Medium", "High"];
+const sortBy = ["Newest", "Oldest"];
 
 const FilterIcon = ({filterData, setFilterData}) => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
@@ -19,6 +20,10 @@ const FilterIcon = ({filterData, setFilterData}) => {
 
   const handleLabelFilter = (label) => {
     setFilterData((prev) => ({...prev, currentLabel: label}));
+  };
+
+  const handleSortFilter = (sort) => {
+    setFilterData((prev) => ({...prev, sortBy: sort}));
   };
   return (
     <>
@@ -66,8 +71,18 @@ const FilterIcon = ({filterData, setFilterData}) => {
           </div>
           <div className="filter-section flex-align-center">
             <p>Sor by date</p>
-            <span className="fs-14 cursor-pointer filter-label">Newest</span>
-            <span className="fs-14 cursor-pointer filter-label">Oldest</span>
+            {sortBy.map((item, index) => (
+              <span
+                key={index}
+                className={`fs-14 cursor-pointer filter-label ${isFilterActive(
+                  item,
+                  filterData.sortBy
+                )}`}
+                onClick={() => handleSortFilter(item)}
+              >
+                {item}
+              </span>
+            ))}
           </div>
         </div>
       )}

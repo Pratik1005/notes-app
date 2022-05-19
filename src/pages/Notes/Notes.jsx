@@ -1,6 +1,6 @@
 import "./Notes.css";
 import {useState} from "react";
-import {getNotesByPriority, getNotesByLabel} from "../../utils";
+import {getNotesByPriority, getNotesByLabel, getNotesByDate} from "../../utils";
 import {NavMenu, Header, Note, NoNotes, FilterIcon} from "../../components";
 import {useNotes} from "../../context";
 
@@ -19,6 +19,8 @@ const Notes = () => {
   console.log("priority notes", priorityNotes);
   const labelNotes = getNotesByLabel(priorityNotes, filterData.currentLabel);
   console.log("label notes", labelNotes);
+  const sortedNotes = getNotesByDate(labelNotes, filterData.sortBy);
+  console.log("sorted notes", sortedNotes);
   return (
     <>
       <Header />
