@@ -1,5 +1,5 @@
 import "./Notes.css";
-import {NavMenu, Header, Note, NoNotes} from "../../components";
+import {NavMenu, Header, Note, NoNotes, FilterIcon} from "../../components";
 import {useNotes} from "../../context";
 
 const Notes = () => {
@@ -13,9 +13,7 @@ const Notes = () => {
           <div className="search-bar">
             <span className="material-icons search-icon">search</span>
             <input type="text" className="search-input" placeholder="Search" />
-            <span className="material-icons filter-icon icon-hover pd-xs br-full cursor-pointer">
-              tune
-            </span>
+            <FilterIcon />
           </div>
           <div className="all-notes">
             {notesState.notes.length > 0 ? (

@@ -20,6 +20,10 @@
   justify-content: space-between;
 }
 
+.fs-14 {
+  font-size: 14px;
+}
+
 /* top bar/header */
 .top-header {
   background-color: var(--menu-background);

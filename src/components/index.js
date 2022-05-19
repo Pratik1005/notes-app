@@ -16,3 +16,4 @@ export {LabelInput} from "./LabelInput";
 export {LabelIcon} from "./icon components/LabelIcon";
 export {PaletteIcon} from "./icon components/PaletteIcon";
 export {PriorityIcon} from "./icon components/PriorityIcon";
+export {FilterIcon} from "./icon components/FilterIcon";
