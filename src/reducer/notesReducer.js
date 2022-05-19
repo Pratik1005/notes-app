@@ -60,6 +60,24 @@ const notesReducer = (state, action) => {
             : item
         ),
       };
+    case USER_ACTIONS.ADD_NOTE_PRIORITY:
+      return {
+        ...state,
+        notes: state.notes.map((item) =>
+          item._id === action.payload.id
+            ? {...item, notePriority: action.payload.priority}
+            : item
+        ),
+      };
+    case USER_ACTIONS.ADD_NOTE_PRIORITY_IN_ARCHIVE:
+      return {
+        ...state,
+        archives: state.archives.map((item) =>
+          item._id === action.payload.id
+            ? {...item, notePriority: action.payload.priority}
+            : item
+        ),
+      };
     default:
       return state;
   }

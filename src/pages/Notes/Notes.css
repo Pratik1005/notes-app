@@ -128,7 +128,6 @@ input.search-input {
   background-color: var(--body-background);
   position: absolute;
   gap: 8px;
-  right: 9rem;
   bottom: -3.1rem;
   box-shadow: var(--dark-shadow);
   z-index: 1;
@@ -162,4 +161,21 @@ input.search-input {
 
 .color-ring-blue {
   background-color: #aecbfa;
+}
+
+/* Priority option */
+.priority-option {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  bottom: -6rem;
+  background-color: var(--body-background);
+  box-shadow: var(--dark-shadow);
+  z-index: 1;
+}
+
+.priority {
+  width: 4.3rem;
+  padding-left: 10px;
 }

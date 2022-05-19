@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useNotes} from "../../context";
 import {USER_ACTIONS} from "../../reducer";
 
-const PaletteIcon = ({noteId, setNoteBackground}) => {
+const PaletteIcon = ({noteId, setNoteBackground, styleData}) => {
   const [isAddColor, setIsAddColor] = useState(false);
   const {notesDispatch} = useNotes();
 
@@ -25,7 +25,10 @@ const PaletteIcon = ({noteId, setNoteBackground}) => {
         palette
       </span>
       {isAddColor && (
-        <div className="color-palette flex-align-center pd-sm br-md">
+        <div
+          className="color-palette flex-align-center pd-sm br-md"
+          style={styleData}
+        >
           <span
             className="material-icons-outlined default-color br-full cursor-pointer"
             title="Default"

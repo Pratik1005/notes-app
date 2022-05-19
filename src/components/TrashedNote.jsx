@@ -3,7 +3,7 @@ import {restoreFromTrash, deleteFromTrash} from "../services";
 import {dateOnNote} from "../utils";
 
 const TrashedNote = ({noteData}) => {
-  const {_id, noteTitle, noteText, date} = noteData;
+  const {_id, noteTitle, noteText, date, labels, noteBgColor} = noteData;
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
 
@@ -15,12 +15,15 @@ const TrashedNote = ({noteData}) => {
     deleteFromTrash(auth.token, _id, notesDispatch);
   };
   return (
-    <div className="note pd-sm">
+    <div className={`note pd-sm ${noteBgColor}`}>
       <h4 className="pd-bottom-md">{noteTitle}</h4>
       <p>{noteText}</p>
       <div className="labels-ctn">
-        <label className="label-chip br-full">Test</label>
-        <label className="label-chip br-full">Core concept</label>
+        {labels.map((item, index) => (
+          <label className="label-chip br-full" key={index}>
+            {item}
+          </label>
+        ))}
       </div>
       <div className="note-option-ctn">
         <span className="note-date">{dateOnNote(date)}</span>

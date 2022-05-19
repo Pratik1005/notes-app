@@ -14,9 +14,12 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
   const [noteBackground, setNoteBackground] = useState(
     noteData?.noteBgColor ? noteData.noteBgColor : ""
   );
+  const [currentPriority, setCurrentPriority] = useState(() =>
+    noteData?.notePriority ? noteData.notePriority : "Low"
+  );
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
-  console.log(noteData);
+
   const handleAddNote = () => {
     if (!isNoteEmpty(noteTitle, noteText)) {
       addNote(
@@ -27,6 +30,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           date: new Date().toString(),
           labels: [],
           noteBgColor: noteBackground,
+          notePriority: currentPriority,
         },
         notesDispatch
       );
@@ -44,11 +48,11 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           noteText,
           date: new Date().toString,
           noteBgColor: noteBackground,
+          notePriority: currentPriority,
         },
         notesDispatch
       );
       setIsModalOpen((prev) => !prev);
-      console.log("edit note", noteBackground);
     }
   };
 
@@ -94,12 +98,16 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
             <AddNoteOptions
               handleAddNote={handleAddNote}
               setNoteBackground={setNoteBackground}
+              currentPriority={currentPriority}
+              setCurrentPriority={setCurrentPriority}
             />
           ) : (
             <EditNoteOptions
               handleEditNote={handleEditNote}
               noteData={noteData}
               setNoteBackground={setNoteBackground}
+              currentPriority={currentPriority}
+              setCurrentPriority={setCurrentPriority}
             />
           )}
         </div>

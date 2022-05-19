@@ -5,17 +5,30 @@ import {
   DeleteIcon,
   LabelIcon,
   PaletteIcon,
+  PriorityIcon,
 } from "./index";
 
-const EditNoteOptions = ({handleEditNote, noteData, setNoteBackground}) => {
+const EditNoteOptions = ({
+  handleEditNote,
+  noteData,
+  setNoteBackground,
+  currentPriority,
+  setCurrentPriority,
+}) => {
   const location = useLocation();
   return (
     <>
       <div className="note-option">
-        <span className="priority fw-bold">High</span>
+        <PriorityIcon
+          noteId={noteData._id}
+          currentPriority={currentPriority}
+          setCurrentPriority={setCurrentPriority}
+          styleData={{left: 0}}
+        />
         <PaletteIcon
           noteId={noteData._id}
           setNoteBackground={setNoteBackground}
+          styleData={{left: "-1.5rem"}}
         />
         <LabelIcon noteData={noteData} styleData={{left: "10.3rem"}} />
         {location.pathname === "/archive" ? (
