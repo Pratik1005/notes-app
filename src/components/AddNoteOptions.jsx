@@ -1,16 +1,23 @@
-import {LabelIcon} from "./index";
+import {PaletteIcon, PriorityIcon} from "./index";
 
-const AddNoteOptions = ({handleAddNote}) => {
+const AddNoteOptions = ({
+  handleAddNote,
+  setNoteBackground,
+  currentPriority,
+  setCurrentPriority,
+}) => {
   return (
     <>
       <div className="note-option">
-        <span className="priority fw-bold">High</span>
-        <span
-          className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-          title="Background options"
-        >
-          palette
-        </span>
+        <PriorityIcon
+          currentPriority={currentPriority}
+          setCurrentPriority={setCurrentPriority}
+          styleData={{left: 0}}
+        />
+        <PaletteIcon
+          setNoteBackground={setNoteBackground}
+          styleData={{left: "-1.5rem"}}
+        />
       </div>
       <div>
         <span

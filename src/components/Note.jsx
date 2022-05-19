@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import {dateOnNote} from "../utils";
 import {
@@ -7,15 +7,23 @@ import {
   UnarchiveIcon,
   DeleteIcon,
   LabelIcon,
+  PaletteIcon,
+  PriorityIcon,
 } from "./index";
 
 const Note = ({noteData}) => {
-  const {_id, noteTitle, noteText, date, labels} = noteData;
+  const {_id, noteTitle, noteText, date, labels, noteBgColor, notePriority} =
+    noteData;
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
+  const [noteBackground, setNoteBackground] = useState(noteBgColor);
+  const [currentPriority, setCurrentPriority] = useState(() => notePriority);
 
+  useEffect(() => {
+    setCurrentPriority(() => notePriority);
+  }, [notePriority]);
   return (
-    <div className="note pd-sm">
+    <div className={`note pd-sm ${noteBgColor}`}>
       <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
         push_pin
       </span>
@@ -31,13 +39,17 @@ const Note = ({noteData}) => {
       <div className="note-option-ctn">
         <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
-          <span className="priority fw-bold">High</span>
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            title="Background options"
-          >
-            palette
-          </span>
+          <PriorityIcon
+            currentPriority={currentPriority}
+            setCurrentPriority={setCurrentPriority}
+            noteId={_id}
+            styleData={{left: "15rem"}}
+          />
+          <PaletteIcon
+            setNoteBackground={setNoteBackground}
+            noteId={noteData._id}
+            styleData={{right: "9rem"}}
+          />
           <LabelIcon noteData={noteData} styleData={{right: "-20px"}} />
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />
@@ -53,7 +65,12 @@ const Note = ({noteData}) => {
           </span>
           <DeleteIcon noteId={_id} />
           {isEditNote && (
-            <NoteModal setIsModalOpen={setIsEditNote} noteData={noteData} />
+            <NoteModal
+              setIsModalOpen={setIsEditNote}
+              noteData={noteData}
+              currentPriority={currentPriority}
+              setCurrentPriority={setCurrentPriority}
+            />
           )}
         </div>
       </div>
