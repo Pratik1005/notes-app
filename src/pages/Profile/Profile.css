@@ -4,6 +4,7 @@
   margin: 1rem auto;
   box-shadow: var(--dark-shadow);
   background-color: var(--profile-ctn-background);
+  color: var(--text-color);
 }
 
 .profile-img {

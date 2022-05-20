@@ -2,6 +2,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import {ToastContainer} from "react-toastify";
 import {Routes, Route} from "react-router-dom";
+import {useTheme} from "./context";
 import {RequiresAuth} from "./components";
 import {
   Home,
@@ -15,8 +16,9 @@ import {
 } from "./pages";
 
 function App() {
+  const {theme} = useTheme();
   return (
-    <div className="App light-theme">
+    <div className={`App ${theme}`}>
       <ToastContainer autoClose={1200} />
       <Routes>
         <Route path={"/"} element={<Home />} />
