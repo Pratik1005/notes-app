@@ -25,8 +25,10 @@ const getSearchNotes = (notes, searchQuery) => {
   if (searchQuery.trim()) {
     return notes.filter(
       (item) =>
-        item.noteTitle.includes(searchQuery) ||
-        item.noteText.includes(searchQuery)
+        item.noteTitle
+          .toLowerCase()
+          .includes(searchQuery.trim().toLowerCase()) ||
+        item.noteText.toLowerCase().includes(searchQuery.trim().toLowerCase())
     );
   }
   return notes;
