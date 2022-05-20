@@ -1,0 +1,14 @@
+.profile-ctn {
+  width: 100%;
+  max-width: 31.25rem;
+  margin: 1rem auto;
+  box-shadow: var(--dark-shadow);
+  background-color: var(--profile-ctn-background);
+}
+
+.profile-img {
+  width: 9.375rem;
+  height: 9.375rem;
+  overflow: hidden;
+  margin: 1rem auto;
+}

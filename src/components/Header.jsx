@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import profilePic from "../assets/profile_pic.jpg";
 
 const Header = () => {
@@ -9,7 +10,9 @@ const Header = () => {
           dark_mode
         </span>
         <div className="avatar-ctn br-full cursor-pointer">
-          <img src={profilePic} alt="user" className="img-responsive" />
+          <Link to="/profile">
+            <img src={profilePic} alt="user" className="img-responsive" />
+          </Link>
         </div>
       </div>
     </header>

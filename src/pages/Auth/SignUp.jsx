@@ -37,6 +37,10 @@ const SignUp = () => {
         password,
       });
       localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({firstName, lastName, email})
+      );
       setAuth({token: response.data.encodedToken, isLoggedIn: true});
       toast.success("Successfully Signed In");
       navigate("/notes");
