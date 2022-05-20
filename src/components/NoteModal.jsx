@@ -51,6 +51,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           date: new Date().toString,
           noteBgColor: noteBackground,
           notePriority: currentPriority,
+          isPinned: isNotePinned,
         },
         notesDispatch
       );
