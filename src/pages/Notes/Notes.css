@@ -216,3 +216,16 @@ input.search-input {
   background-color: var(--clr-primary);
   color: #fff;
 }
+
+@media screen and (max-width: 1400px) {
+  .filter-ctn {
+    bottom: -8.5rem;
+    right: 0;
+  }
+
+  .notes-ctn {
+    padding-top: 1rem;
+    min-height: 100vh;
+    height: 100%;
+  }
+}

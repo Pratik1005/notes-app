@@ -15,7 +15,10 @@ const Header = () => {
   };
   return (
     <header className="top-header">
-      <h1 className="header-logo">MyNotes</h1>
+      <div className="flex-align-center">
+        <span className="material-icons mobile-menu-icon">menu</span>
+        <h1 className="header-logo">MyNotes</h1>
+      </div>
       <div className="theme-profile-ctn">
         <span
           className="material-icons theme-icon cursor-pointer"
