@@ -25,6 +25,13 @@ const FilterIcon = ({filterData, setFilterData}) => {
   const handleSortFilter = (sort) => {
     setFilterData((prev) => ({...prev, sortBy: sort}));
   };
+
+  const handleClearFilter = () => {
+    setFilterData(() => ({
+      currentPriority: "",
+      sortBy: "",
+    }));
+  };
   return (
     <>
       <span
@@ -37,7 +44,9 @@ const FilterIcon = ({filterData, setFilterData}) => {
         <div className="filter-ctn br-md pd-sm">
           <div className="flex-align-center just-con-sp-bt">
             <h4>Filter by</h4>
-            <span className="cursor-pointer">Clear all</span>
+            <span className="cursor-pointer" onClick={handleClearFilter}>
+              Clear all
+            </span>
           </div>
           <div className="filter-section flex-align-center">
             <span>Priority:</span>
@@ -54,7 +63,7 @@ const FilterIcon = ({filterData, setFilterData}) => {
               </span>
             ))}
           </div>
-          <div className="filter-section flex-align-center">
+          {/* <div className="filter-section flex-align-center">
             <span>Labels:</span>
             {notesState.labels.map((item) => (
               <span
@@ -68,7 +77,7 @@ const FilterIcon = ({filterData, setFilterData}) => {
                 {item.label}
               </span>
             ))}
-          </div>
+          </div> */}
           <div className="filter-section flex-align-center">
             <p>Sor by date</p>
             {sortBy.map((item, index) => (

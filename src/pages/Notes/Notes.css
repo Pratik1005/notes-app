@@ -185,14 +185,14 @@ input.search-input {
 .filter-ctn {
   position: absolute;
   background-color: var(--body-background);
-  bottom: -9.5rem;
+  bottom: -5rem;
   right: -16.5rem;
   box-shadow: var(--dark-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 16.8rem;
-  height: 12.5rem;
+  height: 8.5rem;
   overflow-y: auto;
   z-index: 1;
 }

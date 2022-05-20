@@ -5,13 +5,6 @@ const getNotesByPriority = (notes, priority) => {
   return notes;
 };
 
-const getNotesByLabel = (notes, label) => {
-  if (label) {
-    return notes.filter((item) => item.labels.includes(label));
-  }
-  return notes;
-};
-
 const getNotesByDate = (notes, sortBy) => {
   if (sortBy === "Newest") {
     return [...notes].sort(
@@ -28,4 +21,15 @@ const getNotesByDate = (notes, sortBy) => {
   return notes;
 };
 
-export {getNotesByPriority, getNotesByLabel, getNotesByDate};
+const getSearchNotes = (notes, searchQuery) => {
+  if (searchQuery.trim()) {
+    return notes.filter(
+      (item) =>
+        item.noteTitle.includes(searchQuery) ||
+        item.noteText.includes(searchQuery)
+    );
+  }
+  return notes;
+};
+
+export {getNotesByPriority, getNotesByDate, getSearchNotes};

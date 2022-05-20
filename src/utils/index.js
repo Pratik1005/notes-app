@@ -4,6 +4,6 @@ export {getLabelNotes} from "./getLabelNotes";
 export {isLabelInNote} from "./isLabelInNote";
 export {
   getNotesByPriority,
-  getNotesByLabel,
   getNotesByDate,
+  getSearchNotes,
 } from "./noteFilters";
