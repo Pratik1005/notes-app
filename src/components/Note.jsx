@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
+import {useAuth, useNotes} from "../context";
+import {editNote} from "../services";
 import {dateOnNote} from "../utils";
 import {
   NoteModal,
@@ -12,19 +14,43 @@ import {
 } from "./index";
 
 const Note = ({noteData}) => {
-  const {_id, noteTitle, noteText, date, labels, noteBgColor, notePriority} =
-    noteData;
+  const {
+    _id,
+    noteTitle,
+    noteText,
+    date,
+    labels,
+    noteBgColor,
+    notePriority,
+    isPinned,
+  } = noteData;
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
   const [noteBackground, setNoteBackground] = useState(noteBgColor);
   const [currentPriority, setCurrentPriority] = useState(() => notePriority);
+  const {auth} = useAuth();
+  const {notesDispatch} = useNotes();
 
   useEffect(() => {
     setCurrentPriority(() => notePriority);
   }, [notePriority]);
+
+  const handlePinNote = () => {
+    editNote(
+      auth.token,
+      _id,
+      {...noteData, isPinned: !isPinned},
+      notesDispatch
+    );
+  };
   return (
     <div className={`note pd-sm ${noteBgColor}`}>
-      <span className="material-icons-outlined pin-icon icon-hover pd-xs br-full cursor-pointer">
+      <span
+        className={`material-icons${
+          isPinned ? "" : "-outlined"
+        } pin-icon icon-hover pd-xs br-full cursor-pointer`}
+        onClick={handlePinNote}
+      >
         push_pin
       </span>
       <h4 className="pd-bottom-md">{noteTitle}</h4>

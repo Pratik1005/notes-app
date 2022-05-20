@@ -17,6 +17,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
   const [currentPriority, setCurrentPriority] = useState(() =>
     noteData?.notePriority ? noteData.notePriority : "Low"
   );
+  const [isNotePinned, setIsNotePinned] = useState(!!noteData?.isPinned);
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
 
@@ -31,6 +32,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           labels: [],
           noteBgColor: noteBackground,
           notePriority: currentPriority,
+          isPinned: isNotePinned,
         },
         notesDispatch
       );
@@ -49,6 +51,7 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
           date: new Date().toString,
           noteBgColor: noteBackground,
           notePriority: currentPriority,
+          isPinned: isNotePinned,
         },
         notesDispatch
       );
@@ -74,7 +77,12 @@ const NoteModal = ({setIsModalOpen, noteData, isAddNote}) => {
             value={noteTitle}
             onChange={(e) => setNoteTitle(e.target.value)}
           />
-          <span className="material-icons-outlined br-full icon-hover cursor-pointer">
+          <span
+            className={`material-icons${
+              isNotePinned ? "" : "-outlined"
+            } br-full icon-hover cursor-pointer`}
+            onClick={() => setIsNotePinned((prev) => !prev)}
+          >
             push_pin
           </span>
         </div>
