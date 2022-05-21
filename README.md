@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# MyNotes 📝
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Note taking app to help you increase productivity
 
-## Available Scripts
+### Features
 
-In the project directory, you can run:
+1. Note
 
-### `yarn start`
+- Add, edit and delete note.
+- Add low, medium or high priority to note
+- Add labels/tags to note
+- Add background color to note
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Filters
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Search notes using search filter
+- Filter note by priority
+- Sort notes by date (latest or oldest)
 
-### `yarn test`
+3. Label
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Add, edit and delete labels
+- Filter notes by label on single page
 
-### `yarn build`
+4. Archive
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Add note to archive
+- Unarchive note
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Trash
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Add note to trash
+- Restore note from trash
 
-### `yarn eject`
+6. Authentication
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Singup
+- Login
+- Logout
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7. 404 page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- If invalid link is encounter then 404 page not found is shown
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Tech Stack
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <a href="https://github.com/Pratik1005/component-library" target="_blank">LiteSpeedUI</a> css component library
+- React JS
+- React Router v6
+- React Context API + useReducer
+- <a href="https://mockbee.netlify.app/" target="_blank">MockBee</a> for backend.
+- Netlify for deployment
