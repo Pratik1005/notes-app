@@ -32,7 +32,12 @@
   justify-content: space-between;
   position: sticky;
   top: 0;
+  transition: background-color 0.2s linear;
   z-index: 1;
+}
+
+.mobile-menu-icon {
+  display: none;
 }
 
 .header-logo {
@@ -46,6 +51,7 @@
   display: flex;
   align-items: center;
   padding-right: 3rem;
+  color: var(--text-color);
 }
 
 .theme-icon {
@@ -71,13 +77,24 @@
   height: calc(100vh - 4rem);
   position: sticky;
   top: 4rem;
+  transition: background-color 0.2s linear;
   z-index: 2;
+  min-width: 15rem;
 }
 
 .menu-ctn {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+}
+
+.mobile-logo-close {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-link {
@@ -135,6 +152,7 @@ footer p.copyright {
   max-width: 37.5rem;
   width: 100%;
   background-color: var(--profile-ctn-background);
+  color: var(--text-color);
   border-radius: 8px;
   margin-top: 10rem;
   height: fit-content;
@@ -156,10 +174,12 @@ footer p.copyright {
   border: 2px solid var(--light-gray);
   border-radius: 6px;
   resize: none;
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 .modal-cta-btn:hover {
-  background-color: var(--menu-hover);
+  background-color: var(--modal-btn-hover);
 }
 
 /* Edit label modal */
@@ -172,11 +192,15 @@ footer p.copyright {
   width: 100%;
   height: fit-content;
   margin-top: 10rem;
+  color: var(--text-color);
 }
 
 input.input-no-border {
   border: none;
   width: 100%;
+  background-color: transparent;
+  border-radius: 0;
+  color: var(--text-color);
 }
 
 input.input-no-border:focus {
@@ -185,4 +209,54 @@ input.input-no-border:focus {
 
 .label-list-icon {
   font-size: 1.25rem;
+}
+
+@media screen and (max-width: 900px) {
+  .header-logo {
+    padding: 0.5rem 1rem;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    padding-left: 1rem;
+  }
+
+  .theme-profile-ctn {
+    padding-right: 1rem;
+  }
+
+  .app-ctn {
+    display: block;
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  .side-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-height: 100vh;
+    height: 100%;
+    transform: translate(-100%);
+    transition: transform 0.3s linear;
+    z-index: 2;
+  }
+
+  .side-menu.show-menu {
+    transform: translate(0);
+  }
+
+  .mobile-logo-close {
+    display: flex;
+  }
+
+  .add-note-cta {
+    display: none;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
 }

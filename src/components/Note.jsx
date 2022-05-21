@@ -65,31 +65,47 @@ const Note = ({noteData}) => {
       <div className="note-option-ctn">
         <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
-          <PriorityIcon
-            currentPriority={currentPriority}
-            setCurrentPriority={setCurrentPriority}
-            noteId={_id}
-            styleData={{left: "15rem"}}
-          />
-          <PaletteIcon
-            setNoteBackground={setNoteBackground}
-            noteId={noteData._id}
-            styleData={{right: "9rem"}}
-          />
-          <LabelIcon noteData={noteData} styleData={{right: "-20px"}} />
+          {location.pathname === "/archive" ? (
+            ""
+          ) : (
+            <PriorityIcon
+              currentPriority={currentPriority}
+              setCurrentPriority={setCurrentPriority}
+              noteId={_id}
+              styleData={{left: "15rem"}}
+            />
+          )}
+          {location.pathname === "/archive" ? (
+            ""
+          ) : (
+            <PaletteIcon
+              setNoteBackground={setNoteBackground}
+              noteId={noteData._id}
+              styleData={{right: "9rem"}}
+            />
+          )}
+          {location.pathname === "/archive" ? (
+            ""
+          ) : (
+            <LabelIcon noteData={noteData} styleData={{right: "0px"}} />
+          )}
           {location.pathname === "/archive" ? (
             <UnarchiveIcon noteId={_id} />
           ) : (
             <ArchiveIcon noteId={_id} noteData={noteData} />
           )}
-          <span
-            className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
-            title="Edit note"
-            onClick={() => setIsEditNote((prev) => !prev)}
-          >
-            edit
-          </span>
-          <DeleteIcon noteId={_id} />
+          {location.pathname === "/archive" ? (
+            ""
+          ) : (
+            <span
+              className="material-icons-outlined icon-hover pd-xs br-full cursor-pointer"
+              title="Edit note"
+              onClick={() => setIsEditNote((prev) => !prev)}
+            >
+              edit
+            </span>
+          )}
+          {location.pathname === "/archive" ? "" : <DeleteIcon noteId={_id} />}
           {isEditNote && (
             <NoteModal
               setIsModalOpen={setIsEditNote}

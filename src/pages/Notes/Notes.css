@@ -8,6 +8,7 @@
   margin: 1rem auto 0;
   padding: 5px;
   position: relative;
+  color: var(--text-color);
 }
 
 .search-icon,
@@ -19,10 +20,13 @@ input.search-input {
   border: none;
   background-color: transparent;
   width: 100%;
+  color: var(--text-color);
 }
 
 .notes-ctn {
   background-color: var(--body-background);
+  color: var(--text-color);
+  transition: background-color 0.2s linear;
 }
 
 .all-notes {
@@ -39,6 +43,7 @@ input.search-input {
   position: relative;
   max-width: 37.5rem;
   width: 100%;
+  color: var(--text-color);
 }
 
 .labels-ctn {
@@ -58,6 +63,7 @@ input.search-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .note-date {
@@ -115,7 +121,7 @@ input.search-input {
   bottom: -40px;
   max-width: 12.5rem;
   width: 100%;
-  background-color: var(--body-background);
+  background-color: var(--filters-background);
   box-shadow: var(--dark-shadow);
   z-index: 1;
 }
@@ -126,7 +132,7 @@ input.search-input {
 
 /* color palette */
 .color-palette {
-  background-color: var(--body-background);
+  background-color: var(--filters-background);
   position: absolute;
   gap: 8px;
   bottom: -3.1rem;
@@ -171,7 +177,7 @@ input.search-input {
   gap: 8px;
   position: absolute;
   bottom: -6rem;
-  background-color: var(--body-background);
+  background-color: var(--filters-background);
   box-shadow: var(--dark-shadow);
   z-index: 1;
 }
@@ -184,7 +190,7 @@ input.search-input {
 /* Filter Icon */
 .filter-ctn {
   position: absolute;
-  background-color: var(--body-background);
+  background-color: var(--filters-background);
   bottom: -5rem;
   right: -16.5rem;
   box-shadow: var(--dark-shadow);
@@ -211,4 +217,53 @@ input.search-input {
 .filter-select {
   background-color: var(--clr-primary);
   color: #fff;
+}
+
+.mobile-add-cta {
+  display: none;
+}
+
+.btn-float-action {
+  border: none;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+
+@media screen and (max-width: 1400px) {
+  .search-bar {
+    width: 90%;
+  }
+
+  .filter-ctn {
+    bottom: -8.5rem;
+    right: 0;
+  }
+
+  .notes-ctn {
+    padding-top: 1rem;
+    min-height: 100vh;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mobile-add-cta {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .note-option {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .labels-ctn {
+    padding: 1rem 0;
+  }
+
+  .label-list-card {
+    max-width: 10rem;
+  }
 }

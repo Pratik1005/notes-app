@@ -18,10 +18,6 @@ const FilterIcon = ({filterData, setFilterData}) => {
     setFilterData((prev) => ({...prev, currentPriority: priority}));
   };
 
-  const handleLabelFilter = (label) => {
-    setFilterData((prev) => ({...prev, currentLabel: label}));
-  };
-
   const handleSortFilter = (sort) => {
     setFilterData((prev) => ({...prev, sortBy: sort}));
   };
@@ -63,23 +59,8 @@ const FilterIcon = ({filterData, setFilterData}) => {
               </span>
             ))}
           </div>
-          {/* <div className="filter-section flex-align-center">
-            <span>Labels:</span>
-            {notesState.labels.map((item) => (
-              <span
-                key={item.id}
-                className={`fs-14 cursor-pointer filter-label ${isFilterActive(
-                  item.label,
-                  filterData.currentLabel
-                )}`}
-                onClick={() => handleLabelFilter(item.label)}
-              >
-                {item.label}
-              </span>
-            ))}
-          </div> */}
           <div className="filter-section flex-align-center">
-            <p>Sor by date</p>
+            <p>Sor by date:</p>
             {sortBy.map((item, index) => (
               <span
                 key={index}

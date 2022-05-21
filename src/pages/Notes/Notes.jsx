@@ -1,7 +1,14 @@
 import "./Notes.css";
 import {useState} from "react";
 import {getNotesByPriority, getNotesByDate, getSearchNotes} from "../../utils";
-import {NavMenu, Header, Note, NoNotes, FilterIcon} from "../../components";
+import {
+  NavMenu,
+  Header,
+  Note,
+  NoNotes,
+  FilterIcon,
+  NoteModal,
+} from "../../components";
 import {useNotes} from "../../context";
 
 const showPinnedNotes = (pinnedNotes, unPinnedNotes) => {
@@ -23,6 +30,7 @@ const Notes = () => {
   });
   const [searchInput, setSearchInput] = useState("");
   const {notesState} = useNotes();
+  const [isAddNote, setIsAddNote] = useState(false);
 
   const searchNotes = getSearchNotes(notesState.notes, searchInput);
   const priorityNotes = getNotesByPriority(
@@ -63,6 +71,17 @@ const Notes = () => {
               <NoNotes icon="description" text="Notes you add apper here" />
             ) : (
               ""
+            )}
+          </div>
+          <div className="mobile-add-cta">
+            <button
+              className="btn-float-action cursor-pointer"
+              onClick={() => setIsAddNote((prev) => !prev)}
+            >
+              <span className="material-icons">add</span>
+            </button>
+            {isAddNote && (
+              <NoteModal setIsModalOpen={setIsAddNote} isAddNote={isAddNote} />
             )}
           </div>
         </div>
