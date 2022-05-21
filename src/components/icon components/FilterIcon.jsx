@@ -60,7 +60,7 @@ const FilterIcon = ({filterData, setFilterData}) => {
             ))}
           </div>
           <div className="filter-section flex-align-center">
-            <p>Sor by date</p>
+            <p>Sor by date:</p>
             {sortBy.map((item, index) => (
               <span
                 key={index}

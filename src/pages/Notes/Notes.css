@@ -26,6 +26,7 @@ input.search-input {
 .notes-ctn {
   background-color: var(--body-background);
   color: var(--text-color);
+  transition: background-color 0.2s linear;
 }
 
 .all-notes {
@@ -62,6 +63,7 @@ input.search-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .note-date {
@@ -217,7 +219,22 @@ input.search-input {
   color: #fff;
 }
 
+.mobile-add-cta {
+  display: none;
+}
+
+.btn-float-action {
+  border: none;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+
 @media screen and (max-width: 1400px) {
+  .search-bar {
+    width: 90%;
+  }
+
   .filter-ctn {
     bottom: -8.5rem;
     right: 0;
@@ -227,5 +244,26 @@ input.search-input {
     padding-top: 1rem;
     min-height: 100vh;
     height: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mobile-add-cta {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .note-option {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .labels-ctn {
+    padding: 1rem 0;
+  }
+
+  .label-list-card {
+    max-width: 10rem;
   }
 }

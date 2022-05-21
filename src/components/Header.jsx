@@ -1,10 +1,11 @@
 import {Link} from "react-router-dom";
 import {useEffect} from "react";
 import profilePic from "../assets/profile_pic.jpg";
-import {useTheme} from "../context";
+import {useTheme, useMobileMenu} from "../context";
 
 const Header = () => {
   const {theme, setTheme} = useTheme();
+  const {setMobileMenuToggle} = useMobileMenu();
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -16,7 +17,12 @@ const Header = () => {
   return (
     <header className="top-header">
       <div className="flex-align-center">
-        <span className="material-icons mobile-menu-icon">menu</span>
+        <span
+          className="material-icons mobile-menu-icon cursor-pointer"
+          onClick={() => setMobileMenuToggle((prev) => !prev)}
+        >
+          menu
+        </span>
         <h1 className="header-logo">MyNotes</h1>
       </div>
       <div className="theme-profile-ctn">
