@@ -13,6 +13,7 @@ import {
   SignUp,
   Label,
   Profile,
+  PageNotFound,
 } from "./pages";
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
         />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<SignUp />} />
+        <Route path={"*"} element={<PageNotFound />} />
       </Routes>
     </div>
   );
