@@ -58,6 +58,16 @@ const SignUp = () => {
       toast.error("Passwords should match");
     }
   };
+
+  const handleTestInput = () => {
+    setSignUpData({
+      firstName: "Jhon",
+      lastName: "Doe",
+      email: "jhondoe@gmail.com",
+      password: "jhon@123",
+      confirmPassword: "jhon@123",
+    });
+  };
   return (
     <section className="auth-form-ctn">
       <form className="br-md auth-form" onSubmit={handleSignUp}>
@@ -186,6 +196,15 @@ const SignUp = () => {
         </div>
         <div className="form-control">
           <button className="btn btn-primary">Create New Account</button>
+        </div>
+        <div className="form-control">
+          <button
+            type="button"
+            className="btn btn-primary-outline"
+            onClick={handleTestInput}
+          >
+            Fill test credentials
+          </button>
         </div>
         <div className="account-toggle fw-bold">
           <Link to="/login">
