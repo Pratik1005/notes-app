@@ -2,11 +2,13 @@ import "./Auth.css";
 import {toast} from "react-toastify";
 import axios from "axios";
 import {useState} from "react";
-import {useAuth} from "../../context";
+import {useAuth, useNotes} from "../../context";
 import {useNavigate, useLocation, Link} from "react-router-dom";
+import {getNotes} from "../../services";
 
 const Login = () => {
   const {setAuth} = useAuth();
+  const {notesDispatch} = useNotes();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -36,6 +38,7 @@ const Login = () => {
       localStorage.setItem("userData", JSON.stringify(response.data.foundUser));
       localStorage.setItem("token", response.data.encodedToken);
       setAuth({token: response.data.encodedToken, isLoggedIn: true});
+      getNotes(response.data.encodedToken, notesDispatch);
       toast.success("You have logged in");
       navigate(from, {replace: true});
     } catch (err) {

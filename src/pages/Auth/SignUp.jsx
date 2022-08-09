@@ -31,10 +31,10 @@ const SignUp = () => {
     const {firstName, lastName, email, password} = userData;
     try {
       const response = await axios.post("api/auth/signup", {
-        firstName,
-        lastName,
         email,
         password,
+        firstName,
+        lastName,
       });
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem(
@@ -57,6 +57,16 @@ const SignUp = () => {
     } else {
       toast.error("Passwords should match");
     }
+  };
+
+  const handleTestInput = () => {
+    setSignUpData({
+      firstName: "Jhon",
+      lastName: "Doe",
+      email: "jhondoe@gmail.com",
+      password: "jhon@123",
+      confirmPassword: "jhon@123",
+    });
   };
   return (
     <section className="auth-form-ctn">
@@ -186,6 +196,15 @@ const SignUp = () => {
         </div>
         <div className="form-control">
           <button className="btn btn-primary">Create New Account</button>
+        </div>
+        <div className="form-control">
+          <button
+            type="button"
+            className="btn btn-primary-outline"
+            onClick={handleTestInput}
+          >
+            Fill test credentials
+          </button>
         </div>
         <div className="account-toggle fw-bold">
           <Link to="/login">

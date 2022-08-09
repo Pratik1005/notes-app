@@ -9,8 +9,6 @@ import {
   UnarchiveIcon,
   DeleteIcon,
   LabelIcon,
-  PaletteIcon,
-  PriorityIcon,
 } from "./index";
 
 const Note = ({noteData}) => {
@@ -26,7 +24,6 @@ const Note = ({noteData}) => {
   } = noteData;
   const location = useLocation();
   const [isEditNote, setIsEditNote] = useState(false);
-  const [noteBackground, setNoteBackground] = useState(noteBgColor);
   const [currentPriority, setCurrentPriority] = useState(() => notePriority);
   const {auth} = useAuth();
   const {notesDispatch} = useNotes();
@@ -49,7 +46,7 @@ const Note = ({noteData}) => {
         className={`material-icons${
           isPinned ? "" : "-outlined"
         } pin-icon icon-hover pd-xs br-full cursor-pointer`}
-        onClick={handlePinNote}
+        onClick={location.pathname === "/notes" ? handlePinNote : () => {}}
       >
         push_pin
       </span>
@@ -65,25 +62,7 @@ const Note = ({noteData}) => {
       <div className="note-option-ctn">
         <span className="note-date">{dateOnNote(date)}</span>
         <div className="note-option">
-          {location.pathname === "/archive" ? (
-            ""
-          ) : (
-            <PriorityIcon
-              currentPriority={currentPriority}
-              setCurrentPriority={setCurrentPriority}
-              noteId={_id}
-              styleData={{left: "15rem"}}
-            />
-          )}
-          {location.pathname === "/archive" ? (
-            ""
-          ) : (
-            <PaletteIcon
-              setNoteBackground={setNoteBackground}
-              noteId={noteData._id}
-              styleData={{right: "9rem"}}
-            />
-          )}
+          <span className="priority fw-bold">{currentPriority}</span>
           {location.pathname === "/archive" ? (
             ""
           ) : (
