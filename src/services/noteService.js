@@ -35,4 +35,18 @@ const editNote = async (token, noteId, note, notesDispatch) => {
   }
 };
 
-export {addNote, editNote};
+const getNotes = async (token, notesDispatch) => {
+  try {
+    const response = await axios.get("/api/notes", {
+      headers: {authorization: token},
+    });
+    notesDispatch({
+      type: USER_ACTIONS.INITIAL_NOTES,
+      payload: response.data.notes,
+    });
+  } catch (err) {
+    console.error("get initial notes", err);
+  }
+};
+
+export {addNote, editNote, getNotes};

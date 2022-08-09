@@ -8,7 +8,7 @@ const PaletteIcon = ({noteId, setNoteBackground, styleData}) => {
 
   const handleBackgroundColor = (bgColor) => {
     if (setNoteBackground) {
-      setNoteBackground(bgColor);
+      setNoteBackground(() => bgColor);
     }
     notesDispatch({
       type: USER_ACTIONS.CHANGE_NOTE_COLOR,

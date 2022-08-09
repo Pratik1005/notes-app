@@ -31,10 +31,10 @@ const SignUp = () => {
     const {firstName, lastName, email, password} = userData;
     try {
       const response = await axios.post("api/auth/signup", {
-        firstName,
-        lastName,
         email,
         password,
+        firstName,
+        lastName,
       });
       localStorage.setItem("token", response.data.encodedToken);
       localStorage.setItem(

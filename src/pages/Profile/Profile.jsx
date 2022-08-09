@@ -2,13 +2,15 @@ import "./Profile.css";
 import profileImg from "../../assets/profile_pic.jpg";
 import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAuth} from "../../context";
+import {useAuth, useNotes} from "../../context";
 import {NavMenu, Header} from "../../components";
+import {USER_ACTIONS} from "../../reducer";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const {setAuth} = useAuth();
   const navigate = useNavigate();
+  const {notesDispatch} = useNotes();
 
   useEffect(() => {
     setUserData(JSON.parse(localStorage.getItem("userData")));
@@ -18,6 +20,7 @@ const Profile = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userData");
     setAuth({token: "", isLoggedIn: false});
+    notesDispatch({type: USER_ACTIONS.INITIAL_NOTES, payload: []});
     navigate("/");
   };
   return (
