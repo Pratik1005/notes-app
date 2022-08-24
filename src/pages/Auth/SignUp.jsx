@@ -30,7 +30,7 @@ const SignUp = () => {
   const signUpUser = async (userData) => {
     const {firstName, lastName, email, password} = userData;
     try {
-      const response = await axios.post("api/auth/signup", {
+      const response = await axios.post("/api/auth/signup", {
         email,
         password,
         firstName,
